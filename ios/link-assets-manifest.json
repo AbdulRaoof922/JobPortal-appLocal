@@ -1,0 +1,137 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/MartelSans-Black.ttf",
+      "sha1": "1ef39fe4c4a4f7e0e95e70c58b74e6b66876b615"
+    },
+    {
+      "path": "assets/fonts/MartelSans-Bold.ttf",
+      "sha1": "6f7c22b61aef2390eba663a8c0ae758db47b22d5"
+    },
+    {
+      "path": "assets/fonts/MartelSans-ExtraBold.ttf",
+      "sha1": "30723743b8b22a3abba59fc3440536b5962ea96c"
+    },
+    {
+      "path": "assets/fonts/MartelSans-ExtraLight.ttf",
+      "sha1": "a7a3751e2137f2964e73c7bf35d97319b40e7a77"
+    },
+    {
+      "path": "assets/fonts/MartelSans-Light.ttf",
+      "sha1": "8a543606f560b1b85fc7581f1a3dea4483fcea85"
+    },
+    {
+      "path": "assets/fonts/MartelSans-Regular.ttf",
+      "sha1": "e773f925655e58afd93289ae82d43c781a2621ea"
+    },
+    {
+      "path": "assets/fonts/MartelSans-SemiBold.ttf",
+      "sha1": "967f508e0165d9f16e966dc6a68854240711b9ed"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha1": "4739c91988296ee74a3db7750ae2de0cf4330cdb"
+    },
+    {
+      "path": "assets/fonts/Poppins-Black.otf",
+      "sha1": "655fab6b19943846e5f0ffcd16db0db9c3f71388"
+    },
+    {
+      "path": "assets/fonts/Poppins-BlackItalic.otf",
+      "sha1": "eedb44118d88c4539b6d4406eefee0c1cd0f30f5"
+    },
+    {
+      "path": "assets/fonts/Poppins-Bold.otf",
+      "sha1": "fc40855366c1f38478de1473bf483a4ad5d515ac"
+    },
+    {
+      "path": "assets/fonts/Poppins-BoldItalic.otf",
+      "sha1": "1b542893528d1461ddef0a8013f43a91967505c6"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraBold.otf",
+      "sha1": "d1c2b0934a312e45e8ac0e4ce40916909ce957de"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraBoldItalic.otf",
+      "sha1": "63235caa73017e3f7cec67acbf4347b5d4a685f2"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraLight.otf",
+      "sha1": "30bab3b24243bf0ce8ae297ed34c21a2399da47a"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraLightItalic.otf",
+      "sha1": "e2d7d6fccfda770b9f43824babc0fe423c6fc67d"
+    },
+    {
+      "path": "assets/fonts/Poppins-Italic.otf",
+      "sha1": "451e46b5022499a23652409cb2fb389b57fb0b17"
+    },
+    {
+      "path": "assets/fonts/Poppins-Light.otf",
+      "sha1": "37c17e7bee737afaa91b0880df6cbd1f43f1a270"
+    },
+    {
+      "path": "assets/fonts/Poppins-LightItalic.otf",
+      "sha1": "681b445dad2461920b894f6c36b6e06161549f31"
+    },
+    {
+      "path": "assets/fonts/Poppins-Medium.otf",
+      "sha1": "e566106c0be5bca5cb3dd0223953310774f7ca59"
+    },
+    {
+      "path": "assets/fonts/Poppins-MediumItalic.otf",
+      "sha1": "b16dc59f2271a905b4df4fbfe8100c074673208f"
+    },
+    {
+      "path": "assets/fonts/Poppins-Regular.otf",
+      "sha1": "e6fe7a5a39e5e9eabeceb3c853117827367d5c91"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBold.otf",
+      "sha1": "8c0d5c6d40881839910161929e727aac847666c6"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBoldItalic.otf",
+      "sha1": "35d85a97b8e2589d83aee4c6c1a1e9e21ba06d23"
+    },
+    {
+      "path": "assets/fonts/Poppins-Thin.otf",
+      "sha1": "f0ddc10ee6c9742e1dba2451fbccb2beaff8ee0f"
+    },
+    {
+      "path": "assets/fonts/Poppins-ThinItalic.otf",
+      "sha1": "eeb0f5bb920494ed631e9f95c581598a8cc99fb7"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-Bold.ttf",
+      "sha1": "dde5b06eab356601c35ac0f9984724649aa658a9"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-ExtraLight.ttf",
+      "sha1": "6f26b51b0823ded84692d4ef04cd66b07299b7ef"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-Light.ttf",
+      "sha1": "8060e42bb8959858ac0071384f2e80cf115fa09c"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-Medium.ttf",
+      "sha1": "f9df6817edbe84c23a0b4906be92b16552f7a384"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-Regular.ttf",
+      "sha1": "a4488b09892df7457a952dc20d01463b86abf63a"
+    },
+    {
+      "path": "assets/fonts/ReadexPro-SemiBold.ttf",
+      "sha1": "b4ec28a6b1ba6ed730beb37f06b1b81c5e2163a3"
+    },
+    {
+      "path": "assets/fonts/SIL Open Font License.txt",
+      "sha1": "400185a71f50adb2438482b2f6a02cebeeda3b53"
+    }
+  ]
+}
