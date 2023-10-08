@@ -1,11 +1,14 @@
-import {StyleSheet, ScrollView, FlatList, View} from 'react-native';
+import {StyleSheet, ScrollView, FlatList, View, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import JobCard from '../component/JobCard';
 import MainHeader from '../component/MainHeader';
 import axios from 'axios';
 import LoadingModal from '../component/LoadingModal';
+import {useSelector} from 'react-redux';
 
 const CategoryDetails = ({route, navigation}) => {
+  const user = useSelector(state => state.auth.user);
+
   const jobType = route?.params?.jobType;
   const jobCategory = route?.params?.jobCategory;
 
@@ -14,7 +17,7 @@ const CategoryDetails = ({route, navigation}) => {
   const fetchJobCategoriesByType = async (jobType, jobCategory) => {
     try {
       setLoading(true);
-      const url = `https://ill-pear-basket-clam-tie.cyclic.cloud/jobsByCategory/${jobType}/${jobCategory}`;
+      const url = `https://ill-pear-basket-clam-tie.cyclic.cloud/jobsByCategory/${jobType}/${jobCategory}/${user?.user?.userid}`;
       const response = await axios.get(url);
 
       if (response.status === 200) {

@@ -47,7 +47,6 @@ export function timeAgo(dateString) {
 
 JobDetails = ({navigation, route}) => {
   const user = useSelector(state => state.auth.user);
-
   const jobId = route?.params?.jobId;
   const jobData = route?.params?.jobData;
   const [jobDetails, setJobDetails] = useState({});
@@ -57,6 +56,7 @@ JobDetails = ({navigation, route}) => {
     try {
       const url = `https://ill-pear-basket-clam-tie.cyclic.cloud/job-details/${jobId}`;
       const response = await axios.get(url);
+      console.log('Job details:', response.data);
       setJobDetails(response.data);
       setLoading(false);
     } catch (error) {
@@ -79,6 +79,10 @@ JobDetails = ({navigation, route}) => {
       );
 
       alert(response.data.message);
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Main'}],
+      });
       return response.data;
     } catch (error) {
       console.error('Error applying for job:', error);

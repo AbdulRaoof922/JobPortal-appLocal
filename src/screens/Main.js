@@ -93,9 +93,9 @@ const Main = ({navigation}) => {
 
     try {
       const response = await axios.get(
-        'https://ill-pear-basket-clam-tie.cyclic.cloud/latestJobsByType',
+        `https://ill-pear-basket-clam-tie.cyclic.cloud/latestJobsByType/${user?.user?.userid}`,
       );
-
+      console.log('response', response.data);
       if (response.status === 200) {
         const separatedJobs = separateJobsByType(response.data);
         setCompanyJobs(separatedJobs.companyJobs);
@@ -242,21 +242,23 @@ const Main = ({navigation}) => {
                     item?.id,
                     user.userType === 'Fresher' ? 'freshers' : 'professionals',
                   );
-                  // Find the index of the item you want to update
+                  // Find the index of the item you want to update kjk
                   const indexToUpdate = companyJobs.findIndex(
                     job => job.id === item.id,
                   );
 
                   // Create a new array with the updated item
                   const updatedJobs = companyJobs.map((job, index) =>
-                    index === indexToUpdate ? {...job, itemSaved: true} : job,
+                    index === indexToUpdate
+                      ? {...job, isSaved: job?.isSaved == 0 ? 1 : 0}
+                      : job,
                   );
 
                   // Update the state with the new array
                   setCompanyJobs(updatedJobs);
                   setLoading(false);
                 }}
-                itemSaved={item?.itemSaved}
+                itemSaved={item?.isSaved}
                 onPress={() => {
                   navigation.navigate('JobDetails', {
                     jobData: item,
@@ -294,14 +296,16 @@ const Main = ({navigation}) => {
 
                   // Create a new array with the updated item
                   const updatedJobs = fulltimeJobs.map((job, index) =>
-                    index === indexToUpdate ? {...job, itemSaved: true} : job,
+                    index === indexToUpdate
+                      ? {...job, isSaved: job?.isSaved == 0 ? 1 : 0}
+                      : job,
                   );
 
                   // Update the state with the new array
                   setFulltimeJobs(updatedJobs);
                   setLoading(false);
                 }}
-                itemSaved={item?.itemSaved}
+                itemSaved={item?.isSaved}
                 key={index}
                 onPress={() => {
                   navigation.navigate('JobDetails', {
@@ -338,14 +342,16 @@ const Main = ({navigation}) => {
 
                   // Create a new array with the updated item
                   const updatedJobs = remoteJobs.map((job, index) =>
-                    index === indexToUpdate ? {...job, itemSaved: true} : job,
+                    index === indexToUpdate
+                      ? {...job, isSaved: job?.isSaved == 0 ? 1 : 0}
+                      : job,
                   );
 
                   // Update the state with the new array
                   setRemoteJobs(updatedJobs);
                   setLoading(false);
                 }}
-                itemSaved={item?.itemSaved}
+                itemSaved={item?.isSaved}
                 key={index}
                 onPress={() => {
                   navigation.navigate('JobDetails', {
@@ -382,14 +388,16 @@ const Main = ({navigation}) => {
 
                   // Create a new array with the updated item
                   const updatedJobs = freelanceJobs.map((job, index) =>
-                    index === indexToUpdate ? {...job, itemSaved: true} : job,
+                    index === indexToUpdate
+                      ? {...job, isSaved: job?.isSaved == 0 ? 1 : 0}
+                      : job,
                   );
 
                   // Update the state with the new array
                   setFreelanceJobs(updatedJobs);
                   setLoading(false);
                 }}
-                itemSaved={item?.itemSaved}
+                itemSaved={item?.isSaved}
                 key={index}
                 onPress={() => {
                   navigation.navigate('JobDetails', {
