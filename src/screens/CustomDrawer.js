@@ -11,6 +11,19 @@ import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../redux/Reducers/AuthReducer';
+const getGreeting = () => {
+  const currentHour = new Date().getHours();
+
+  if (currentHour < 12) {
+    return 'Good Morning';
+  } else if (currentHour >= 12 && currentHour < 17) {
+    return 'Good Afternoon';
+  } else if (currentHour >= 17 && currentHour < 21) {
+    return 'Good Evening';
+  } else {
+    return 'Good Night';
+  }
+};
 const CustomDrawer = props => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
@@ -20,10 +33,27 @@ const CustomDrawer = props => {
         {...props}
         contentContainerStyle={{backgroundColor: '#3F6EEC'}}>
         <View style={{flexDirection: 'row', padding: 30, alignItems: 'center'}}>
-          <Image
-            source={require('../assets/jhon.png')}
-            style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
-          />
+          {user?.user?.profileImage ? (
+            <Image
+              source={{uri: user?.user?.profileImage}}
+              style={{
+                height: 80,
+                width: 80,
+                borderRadius: 40,
+                marginBottom: 10,
+              }}
+            />
+          ) : (
+            <Image
+              source={require('../assets/jhon.png')}
+              style={{
+                height: 80,
+                width: 80,
+                borderRadius: 40,
+                marginBottom: 10,
+              }}
+            />
+          )}
           <View style={{marginHorizontal: 10, marginBottom: 8}}>
             <Text
               style={{
@@ -31,7 +61,7 @@ const CustomDrawer = props => {
                 fontSize: 14,
                 fontFamily: 'MartelSans-SemiBold',
               }}>
-              Good Morning
+              {getGreeting()}
             </Text>
             <Text
               style={{

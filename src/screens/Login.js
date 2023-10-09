@@ -33,7 +33,6 @@ const Login = ({navigation}) => {
   const [loader, setLoader] = useState(false);
 
   const handleLoginProfessional = async () => {
-
     setLoader(true);
     try {
       if (!email || !password) {

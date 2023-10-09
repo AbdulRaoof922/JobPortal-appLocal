@@ -95,7 +95,6 @@ const Main = ({navigation}) => {
       const response = await axios.get(
         `https://ill-pear-basket-clam-tie.cyclic.cloud/latestJobsByType/${user?.user?.userid}`,
       );
-      console.log('response', response.data);
       if (response.status === 200) {
         const separatedJobs = separateJobsByType(response.data);
         setCompanyJobs(separatedJobs.companyJobs);

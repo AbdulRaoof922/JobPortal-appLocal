@@ -56,7 +56,6 @@ JobDetails = ({navigation, route}) => {
     try {
       const url = `https://ill-pear-basket-clam-tie.cyclic.cloud/job-details/${jobId}`;
       const response = await axios.get(url);
-      console.log('Job details:', response.data);
       setJobDetails(response.data);
       setLoading(false);
     } catch (error) {

@@ -9,25 +9,112 @@ import {
 import React, {useState} from 'react';
 import MyButton from '../component/MyButton';
 import {ProgressBar} from 'react-native-paper';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
+
 import UtilityMethods from '../utility/UtilityMethods';
+import LoadingModal from '../component/LoadingModal';
+import {setUser} from '../redux/Reducers/AuthReducer';
 const Profile = ({navigation}) => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const showImagePicker = async () => {
     UtilityMethods.selectImage('gallery', image => {
       setImage(image.path);
+      handleImageUpload(image.path);
     });
   };
 
+  const handleImageUpload = async imageData => {
+    try {
+      setLoading(true);
+      const fileUri = imageData;
+      const fileType = fileUri.split('.').pop(); // Extracts file extension
+
+      if (!['png', 'jpg', 'jpeg'].includes(fileType)) {
+        throw new Error(`Unsupported file type: ${fileType}`);
+      }
+
+      const formData = new FormData();
+      formData.append('file', {
+        uri: fileUri,
+        type: `image/${fileType}`, // Dynamically set the MIME type
+        name: `uploaded_image.${fileType}`, // Dynamically set the file extension
+      });
+      formData.append('upload_preset', 'resumes'); // make sure this preset is configured for images
+
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dfewwtzi3/image/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+
+      const imageUrl = response.data.secure_url;
+      onPressUpdate(imageUrl);
+      return imageUrl;
+    } catch (error) {
+      setLoading(false);
+      alert('Error uploading to Cloudinary:', error.message);
+      console.error('Error uploading to Cloudinary:', error);
+      console.error('Error details:', error.message, error.config);
+    }
+  };
+  const onPressUpdate = async imageURL => {
+    setLoading(true);
+
+    try {
+      const response = await axios.patch(
+        `https://ill-pear-basket-clam-tie.cyclic.cloud/update-${
+          user.userType == 'Fresher' ? 'profile' : 'proProfile'
+        }/${user?.user?.id}`,
+        {
+          profileImage: imageURL,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const updatedUser = {
+        ...user.user,
+        profileImage: imageURL,
+        // any other fields you want to update
+      };
+      const updateMainObject = {
+        ...user,
+        user: updatedUser,
+      };
+      dispatch(setUser(updateMainObject));
+      // Handle response accordingly
+      // navigation.goBack();
+
+      // You might want to navigate the user to another screen or update the UI in some way here
+    } catch (err) {
+      console.error('Failed to update profile:', err);
+      // setError(err.message || 'An error occurred while updating profile');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <LoadingModal isVisible={loading} />
       <View style={styles.mainCard}>
         <TouchableOpacity onPress={showImagePicker}>
-          {!image ? (
+          {!image && !user?.user?.profileImage ? (
             <Image style={styles.img} source={require('../assets/jhon.png')} />
           ) : (
-            <Image style={styles.img} source={{uri: image}} />
+            <Image
+              style={styles.img}
+              source={{uri: image ? image : user?.user?.profileImage}}
+            />
           )}
         </TouchableOpacity>
         <Text style={styles.name}>{user?.user?.name}</Text>
@@ -171,6 +258,7 @@ const styles = StyleSheet.create({
     height: 90,
     resizeMode: 'contain',
     borderRadius: 100,
+    backgroundColor: '#ffffff',
   },
   vector: {
     width: 15,

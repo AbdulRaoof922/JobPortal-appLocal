@@ -105,7 +105,9 @@ const SearchJobs = ({navigation}) => {
 
                 // Create a new array with the updated item
                 const updatedJobs = filteredJobs.map((job, index) =>
-                  index === indexToUpdate ? {...job, itemSaved: true} : job,
+                  index === indexToUpdate
+                    ? {...job, isSaved: job?.isSaved == 0 ? 1 : 0}
+                    : job,
                 );
 
                 // Update the state with the new array
@@ -113,7 +115,7 @@ const SearchJobs = ({navigation}) => {
                 setLoading(false);
               }}
               key={index}
-              itemSaved={item?.itemSaved}
+              itemSaved={item?.isSaved}
               title={item?.job_category}
               salary={`$k${item?.salary}/month`}
               location={item?.location}

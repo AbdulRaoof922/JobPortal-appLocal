@@ -18,10 +18,17 @@ const HomeHeader = ({onPress}) => {
           <Text style={styles.text1}>{user?.user?.name}</Text>
           <Text style={styles.text2}> {user?.user?.resumeHeadline}</Text>
         </View>
-        <Image
-          style={styles.profileImage}
-          source={require('../assets/jhon.png')}
-        />
+        {user?.user?.profileImage ? (
+          <Image
+            style={styles.profileImage}
+            source={{uri: user?.user?.profileImage}}
+          />
+        ) : (
+          <Image
+            style={styles.profileImage}
+            source={require('../assets/jhon.png')}
+          />
+        )}
       </View>
     </View>
   );
